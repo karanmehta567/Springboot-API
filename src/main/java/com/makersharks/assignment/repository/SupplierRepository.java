@@ -11,12 +11,13 @@ import java.util.List;
 
 @Repository
 public interface SupplierRepository extends JpaRepository<Supplier, Long> {
-    @Query("SELECT p FROM Supplier p WHERE p.company_name LIKE CONCAT('%',:#{#supplier.company_name},'%') and " +
-            " p.location LIKE CONCAT('%',:#{#supplier.location},'%') and p.website LIKE CONCAT('%',:#{#supplier.website},'%')")
+    @Query("SELECT p FROM Supplier p WHERE p.company_name LIKE CONCAT('%',coalesce(:#{#supplier.company_name},''),'%') and "
+            +
+            "  p.location LIKE CONCAT('%',coalesce(:#{#supplier.location},''),'%') and " +
+            "  p.website LIKE CONCAT('%',coalesce(:#{#supplier.website},''),'%') and " +
+            "  (:#{#supplier.nature_of_business} is null or p.nature_of_business = :#{#supplier.nature_of_business}) and"
+            +
+            "  (:#{#supplier.manufacturing_processes} is null or p.manufacturing_processes = :#{#supplier.manufacturing_processes})")
 
     List<Supplier> searchSuppliers(@Param("supplier") Supplier supplier, Pageable pageable);
-
-    // List<Supplier> findByCompanyNameAndWebsiteAndLocation(@Param("company_name")
-    // String company_name, String website,
-    // String location);
 }

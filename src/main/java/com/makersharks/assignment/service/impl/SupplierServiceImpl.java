@@ -25,7 +25,6 @@ public class SupplierServiceImpl implements SupplierService {
         if (limit == 0) {
             limit = 10;
         }
-        // Pageable sortedByName = PageRequest.of(0, 3, Sort.by("name"));
 
         List<Supplier> suppliers = supplierRepository.searchSuppliers(
                 supplier, PageRequest.of(skip, limit));
