@@ -16,6 +16,18 @@ curl --location 'http://localhost:8080/api/supplier/query' \
     "manufacturing_processes": "MANUFACTuRING_PROCESS_TYPE_MOULDING"
 }'
 ```
+### Post Request
+```
+curl --location 'http://localhost:8080/api/supplier' \
+--header 'Content-Type: application/json' \
+--data '{
+    "company_name": "xylo",
+    "website": "xyzo.com",
+    "location": "london",
+    "nature_of_business": "BUSINESS_NATURE_MEDIUM_SCALE",
+    "manufacturing_processes": "MANUFACTuRING_PROCESS_TYPE_CASTING"
+}'
+```
 # Entity folder
 Notably Table name is suppliers which contains 6 fields i:e supplier_id,company_name,website,location,nature_of_business(enum type),manufacturing_process(enum) 
 # Repo folder 
