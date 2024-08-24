@@ -21,6 +21,6 @@ Notably Table name is suppliers which contains 6 fields i:e supplier_id,company_
 # Repo folder 
 The repository folder contains interfaces that extend Spring Data JPA repositories. These interfaces handle data access and interactions with the database.
 # Controller folder 
-The controller folder contains classes that handle HTTP requests and responses. API endpoint for POST req is /api/supplier.
+The controller folder contains classes that handle HTTP requests and responses. API endpoint for POST req is /api/supplier and for search is /api/supplier/query
 ### TODO
 For security and sensitive data purpose,used JWT bearer tokens.
